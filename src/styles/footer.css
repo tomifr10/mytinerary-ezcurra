@@ -1,0 +1,22 @@
+.footer {
+    width: 100%;
+    background-color: black;
+    height: 15vh;
+}
+
+.links {
+    justify-content: center;
+}
+
+.caja-redes {
+    display: flex;
+    justify-content: center;
+}
+
+.redes {
+    font-size: 3rem;
+    padding: .5rem;
+    /* height: 100px; */
+    /* color: black; */
+    /* background-color: black; */
+}
