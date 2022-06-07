@@ -1,8 +1,6 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { MDBIcon } from 'mdbreact';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import InstagramIcon from '@mui/icons-material/Instagram';
 import '../styles/footer.css'
 
 const Footer = () => {
@@ -15,7 +13,7 @@ const Footer = () => {
             <img
               alt="logo"
               className="logo"
-              src="https://us.123rf.com/450wm/morys/morys1810/morys181000067/112955933-arte-del-vector-de-la-mascota-del-oso-imagen-sim%C3%A9trica-frontal-de-oso-que-parece-peligroso-icono-mon.jpg?ver=6"
+              src={process.env.PUBLIC_URL+'/assets/images/logo-oso.png'}
             />
           </MDBCol>
           <MDBCol md="6" className="links">

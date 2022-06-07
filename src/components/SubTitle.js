@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as LinkRoute} from "react-router-dom";
 import "../styles/subtitle.css";
 
 function Subtitle() {
@@ -16,7 +17,7 @@ function Subtitle() {
             Find your perfect trip, designed by insiders who know and love their
             cities!
           </h3>
-          <button className="boton">Welcome to Canada!</button>
+          <LinkRoute to="/cities" className="boton">Welcome to Canada!</LinkRoute>
         </div>
       </div>
     </>

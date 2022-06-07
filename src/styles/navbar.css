@@ -1,5 +1,4 @@
 .navbar {
-    /* box-shadow: none; */
     margin-top: 1rem;
     box-shadow: none;
 }
@@ -9,4 +8,8 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.MuiButton-textSizeMedium {
+    color: white !important;
 }

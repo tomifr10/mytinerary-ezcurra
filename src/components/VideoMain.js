@@ -1,15 +1,11 @@
 import React from "react";
-import videomain from "../assets/videomainpareja.mp4";
 import "../styles/video.css";
-import Navbar from "./Navbar";
-// import Subtitle from "./SubTitle";
 
 function VideoMain() {
   return (
     <>
       <div className="">
-        <Navbar />
-        <video className="video" src={videomain} autoPlay loop />
+        <video className="video" src={process.env.PUBLIC_URL+"../assets/videomainpareja.mp4"} autoPlay loop />
       </div>
     </>
   );

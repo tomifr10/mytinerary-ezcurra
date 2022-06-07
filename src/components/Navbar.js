@@ -11,9 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import { Link as LinkRoute} from "react-router-dom";
 import "../styles/navbar.css";
 
-const pages = ["Home", "Cities"];
+const pages = [{ to: "/", name: "Home", id: 1 }, { to: "/Cities", name: "Cities", id: 2}];
 const settings = ["Log in", "Sign Up"];
 
 const Navbar = () => {
@@ -47,7 +48,7 @@ const Navbar = () => {
             <img
               alt="logo"
               className="logo"
-              src="https://us.123rf.com/450wm/morys/morys1810/morys181000067/112955933-arte-del-vector-de-la-mascota-del-oso-imagen-sim%C3%A9trica-frontal-de-oso-que-parece-peligroso-icono-mon.jpg?ver=6"
+              src={process.env.PUBLIC_URL+'/assets/images/logo-oso.png'}
             />
           </Box>
           <Typography
@@ -99,9 +100,11 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <LinkRoute to={page.to} key={page.id} onClick={handleCloseNavMenu}>
+                <MenuItem >
+                  <Typography textAlign="center" sx={{color: "white"}}>{page.name}</Typography>
                 </MenuItem>
+              </LinkRoute>
               ))}
             </Menu>
           </Box>
@@ -116,27 +119,9 @@ const Navbar = () => {
             <img
               alt="logo"
               className="logo"
-              src="https://us.123rf.com/450wm/morys/morys1810/morys181000067/112955933-arte-del-vector-de-la-mascota-del-oso-imagen-sim%C3%A9trica-frontal-de-oso-que-parece-peligroso-icono-mon.jpg?ver=6"
+              src={process.env.PUBLIC_URL+'/assets/images/logo-oso.png'}
             />
           </Box>
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
           <Box
             sx={{
               flexGrow: 1,
@@ -145,18 +130,21 @@ const Navbar = () => {
             }}
           >
             {pages.map((page) => (
+            <LinkRoute to={page.to} key={page.id}
+            onClick={handleCloseNavMenu}
+            sx={{
+              my: 2,
+              color: "white",
+              display: "block",
+              fontSize: "1rem",
+            }}>
+
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  fontSize: "1rem",
-                }}
+                
               >
-                {page}
+                {page.name}
               </Button>
+            </LinkRoute>
             ))}
           </Box>
 

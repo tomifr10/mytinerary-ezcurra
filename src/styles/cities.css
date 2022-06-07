@@ -1,0 +1,19 @@
+.contenedor-cities {
+    min-height: 68.5vh;
+    padding-top: 8rem;
+
+
+}
+
+.main-cities {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    min-height: 50vh;
+}
+
+h2 {
+    font-size: 3rem;
+}

@@ -1,17 +1,19 @@
-import BSCarousel from './components/BSCarousel';
-import Subtitle from './components/SubTitle';
-import VideoMain from './components/VideoMain';
+import Navbar from './components/Navbar';
 import Footer from "./components/Footer"
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import Index from './pages/Index'
+import Cities from './pages/Cities'
 import './styles/App.css';
 import './styles/navbar.css'
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <VideoMain/>
-      <Subtitle/>
-      <BSCarousel/>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Index/>}/>
+        <Route path="/cities" element={<Cities/>}/>
+      </Routes>
       <Footer />
     </div>
   );
