@@ -18,7 +18,7 @@ const Footer = () => {
             />
           </MDBCol>
           <MDBCol md="4" className="caja-nav">
-            <LinkRoute to="/" className="nav-footer">Home</LinkRoute>
+            <LinkRoute to="/home" className="nav-footer">Home</LinkRoute>
             <LinkRoute to="/cities" className="nav-footer">Cities</LinkRoute>
           </MDBCol>
           <MDBCol md="4" className="caja-redes">
