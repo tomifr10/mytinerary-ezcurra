@@ -4,19 +4,30 @@
     height: 15vh;
 }
 
-.links {
-    justify-content: center;
-}
-
 .caja-redes {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja-nav {
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 .redes {
     font-size: 3rem;
     padding: .5rem;
-    /* height: 100px; */
-    /* color: black; */
-    /* background-color: black; */
+}
+
+.nav-footer {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+}
+
+.nav-footer:hover {
+    color: black;
 }

@@ -48,7 +48,7 @@ const Navbar = () => {
             <img
               alt="logo"
               className="logo"
-              src={process.env.PUBLIC_URL+'/assets/images/logo-oso.png'}
+              src={process.env.PUBLIC_URL+'/assets/images/logo-oso-fondo.jpg'}
             />
           </Box>
           <Typography
@@ -102,7 +102,7 @@ const Navbar = () => {
               {pages.map((page) => (
               <LinkRoute to={page.to} key={page.id} onClick={handleCloseNavMenu}>
                 <MenuItem >
-                  <Typography textAlign="center" sx={{color: "white"}}>{page.name}</Typography>
+                  <Typography textAlign="center" sx={{color: "black"}} className="a-respon">{page.name}</Typography>
                 </MenuItem>
               </LinkRoute>
               ))}
@@ -119,7 +119,7 @@ const Navbar = () => {
             <img
               alt="logo"
               className="logo"
-              src={process.env.PUBLIC_URL+'/assets/images/logo-oso.png'}
+              src={process.env.PUBLIC_URL+'/assets/images/logo-oso-fondo.jpg'}
             />
           </Box>
           <Box
