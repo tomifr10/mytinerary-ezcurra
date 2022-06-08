@@ -4,15 +4,7 @@ import Box from "@mui/material/Box";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Data from '../data/data.json'
-
-// import Typography from '@mui/material/Typography'
-
-//importo los estilos
 import "../styles/carousel.css";
-
-// importo componentes locales
-// import Carousel from 'react-bootstrap/Carousel';
-
 
 export default function BSCarousel() {
   return (
