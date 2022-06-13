@@ -1,0 +1,72 @@
+
+{
+    "canada": [
+
+        {"provincia": [
+            {
+        "ciudad": "Yukon",
+        "imagen": "/assets/images/Yukon.jpg",
+        "id": 1
+            },
+            {
+        "ciudad": "Vancouver",
+        "imagen": "/assets/images/Vancouver.jpg",
+        "id": 2
+            },
+            {
+        "ciudad": "Alberta",
+        "imagen": "/assets/images/Alberta.jpg",
+        "id": 3
+            },
+            {
+        "ciudad": "Toronto",
+        "imagen": "/assets/images/Toronto.jpg",
+        "id": 4
+            }
+        ]},
+        {"provincia": [
+            {
+        "ciudad": "New Brunswick",
+        "imagen": "/assets/images/Brunswick.jpg",
+        "id": 5
+            },
+            {
+        "ciudad": "Edmonton",
+        "imagen": "/assets/images/Edmonton.jpg",
+        "id": 6
+            },
+            {
+        "ciudad": "Gaspesie",
+        "imagen": "/assets/images/Gaspesie-QB.jpg",
+        "id": 7
+            },
+            {
+        "ciudad": "Niagara",
+        "imagen": "/assets/images/Niagara.jpg",
+        "id": 8
+            }
+        ]},
+        {"provincia": [
+            {
+        "ciudad": "Ontario",
+        "imagen": "/assets/images/Ontario.jpg",
+        "id": 9
+            },
+            {
+        "ciudad": "Prince Edward",
+        "imagen": "/assets/images/Prince-Edward.jpg",
+        "id": 10
+            },
+            {
+        "ciudad": "Quebec",
+        "imagen": "/assets/images/Quebec.jpg",
+        "id": 11
+            },
+            {
+        "ciudad": "New Scotia",
+        "imagen": "/assets/images/Scotia.jpg",
+        "id": 12
+            }
+        ]}
+    ]
+}

@@ -1,0 +1,33 @@
+.footer {
+    width: 100%;
+    background-color: black;
+    height: 15vh;
+}
+
+.caja-redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redes {
+    font-size: 3rem;
+    padding: .5rem;
+}
+
+.nav-footer {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+}
+
+.nav-footer:hover {
+    color: black;
+}
