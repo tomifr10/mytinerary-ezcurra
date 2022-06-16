@@ -41,7 +41,7 @@ function Cities() {
             text="GO UP"
             distance={1400}
             breakpoint={768}
-            style={{ backgroundColor: "black", color: 'white', borderRadius: '50%' }}
+            style={{ backgroundColor: "black", color: 'white', borderRadius: '20px' }}
             className="scroll-your-role"
             speed={500}
             target={500}
