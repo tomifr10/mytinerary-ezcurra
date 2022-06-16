@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //libreria para conectar y trabajar con mongodb
 
-mongoose.connect(process.env.MONGO_URI,
+mongoose.connect(process.env.MONGO_URI, //metodo para conectarse
     {
         useUnifiedTopology: true,
         useNewUrlParser: true,

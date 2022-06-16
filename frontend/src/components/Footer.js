@@ -1,10 +1,26 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { MDBIcon } from 'mdbreact';
+import { useEffect, useState} from 'react'
 import { Link as LinkRoute} from "react-router-dom";
 import '../styles/footer.css'
 
 const Footer = () => {
+
+  const [scroll, setscroll] = useState(0);
+  function subir() {
+    setscroll(scroll + 1)
+  }
+
+  useEffect(() => {
+    if(scroll !== 0)
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant", // Optional if you want to skip the scrolling animation
+    });
+  }, [scroll]);
+
   return (
     <MDBFooter color="blue" className="font-small pt-4">
       <MDBContainer fluid className="text-center text-md-left p-3">
@@ -18,8 +34,8 @@ const Footer = () => {
             />
           </MDBCol>
           <MDBCol md="4" className="caja-nav">
-            <LinkRoute to="/home" className="nav-footer">Home</LinkRoute>
-            <LinkRoute to="/cities" className="nav-footer">Cities</LinkRoute>
+            <LinkRoute onClick={subir} to="/home" className="nav-footer">Home</LinkRoute>
+            <LinkRoute onClick={subir} to="/cities" className="nav-footer">Cities</LinkRoute>
           </MDBCol>
           <MDBCol md="4" className="caja-redes">
               <div>

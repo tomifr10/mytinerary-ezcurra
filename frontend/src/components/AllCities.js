@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "../styles/allCities.css";
 import PrintCities from "./PrintCities";
-import Data from "../data/data.json";
+import NotFound from "./NotFound";
+import axios from 'axios'
 
 function AllCities() {
 
-  let arrayCuidades = [];
-  Data.canada.map(provincia =>
-    provincia.provincia.map(ciudad =>
-      arrayCuidades.push(ciudad)));
-  console.log(arrayCuidades)
-  const [buscador, setbuscador] = useState("");
-  const [arrayfiltro, setarrrayfiltro] = useState(arrayCuidades);
+  const [cities, setCities] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/api/cities')
+            .then(response => setCities(response.data.response.cities))
+            //eslint-disable-next-line
+    },[])
+    
+    console.log(cities)
+
+  const [buscador, setBuscador] = useState("");
+  const [arrayfiltro, setArrrayFiltro] = useState(cities);
   console.log(arrayfiltro)
   
   function busqueda(e) {
-    setbuscador(e.target.value);
+    setBuscador(e.target.value);
   }
   
   useEffect(() => {
-    let ciudadFiltrada = arrayCuidades.filter(ciudad => 
-        ciudad.ciudad.toLowerCase().startsWith(buscador.trim().toLowerCase()));
-        setarrrayfiltro(ciudadFiltrada)
-  },[buscador]);
+    let ciudadFiltrada = cities.filter(ciudad => 
+        ciudad.name.toLowerCase().startsWith(buscador.trim().toLowerCase()));
+        setArrrayFiltro(ciudadFiltrada)
+  },[buscador, cities]);
 
 
   return (
@@ -36,8 +42,7 @@ function AllCities() {
         </svg>
         <input placeholder="Search" type="search" className="input" onKeyUp={busqueda} />
       </div>
-      <div className="container-cities">
-        <PrintCities Array={arrayfiltro} />
+      <div className="container-cities"> {arrayfiltro && arrayfiltro?.length !== 0 ? <PrintCities Array={arrayfiltro} /> : <NotFound/> }
       </div>
     </div>
   );

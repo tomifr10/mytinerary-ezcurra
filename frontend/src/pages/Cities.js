@@ -38,10 +38,10 @@ function Cities() {
             </div>
             <AllCities />
             <ScrollTop 
-            text="Go up"
+            text="GO UP"
             distance={1400}
             breakpoint={768}
-            style={{ backgroundColor: "red", color: 'white' }}
+            style={{ backgroundColor: "black", color: 'white', borderRadius: '50%' }}
             className="scroll-your-role"
             speed={500}
             target={500}

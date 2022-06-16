@@ -1,0 +1,18 @@
+.container-notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: auto;
+}
+
+.logo-notFound {
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+.notFound { 
+    font-size: 2rem;
+}
