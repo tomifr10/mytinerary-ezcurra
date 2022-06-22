@@ -1,41 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import Itinerary from '../components/Itinerary';
 import { useParams } from 'react-router-dom';
 import { Link as LinkRoute} from "react-router-dom";
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
 import '../styles/cardDetail.css';
+import citiesActions from '../redux/actions/citiesActions';
 
 function CardDetail() {
 
+    const dispatch = useDispatch()
+    const city = useSelector(store => store.cityReducer.city)
+    
+    const { id } = useParams();
     useEffect(() => {
-        // "document.documentElement.scrollTo" is the magic for React Router Dom v6
+        dispatch(citiesActions.mostrarOneCity(id))
+      },[])
+
+    useEffect(() => {
             document.documentElement.scrollTo({
               top: 0,
               left: 0,
-              behavior: "smooth", // Optional if you want to skip the scrolling animation
+              behavior: "smooth",
             });
       }, []);  
 
-    const { id } = useParams();
-
-    const [cities, setCities] = useState([])
-
-    useEffect(() => {
-        axios.get('http://localhost:4000/api/cities/' + id)
-            .then(response => setCities(response.data.response))
-            //eslint-disable-next-line
-        },[])
-
-    // const cardDetail = cities
-    // console.log(cardDetail)
     return (
-        <div className='container-detail'>
-            <LinkRoute className="boton-back" to="/cities">Back</LinkRoute>
-            <img alt="foto-detail" className="foto-detail" src={process.env.PUBLIC_URL + `${cities.image}`}/>
-            <h3 className="titulo-detail">{cities.name}</h3>
-            <div>
-                <p className="description">{cities.description}</p>
+        <>
+            <div className='container-detail'>
+                <LinkRoute className="boton-back" to="/cities">Back</LinkRoute>
+                <img alt="foto-detail" className="foto-detail" src={process.env.PUBLIC_URL + `${city.image}`}/>
+                <h3 className="titulo-detail">{city.name}</h3>
+                <div>
+                    <p className="description">{city.description}</p>
+                </div>
             </div>
-        </div>
+            <h2 className='itineraries'>Itineraries</h2>
+            <Itinerary />
+        </>
     )
 }
 export default CardDetail

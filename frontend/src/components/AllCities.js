@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 import "../styles/allCities.css";
 import PrintCities from "./PrintCities";
 import NotFound from "./NotFound";
-import axios from 'axios'
+import citiesActions from '../redux/actions/citiesActions';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function AllCities() {
 
-  const [cities, setCities] = useState([])
+  const dispatch = useDispatch()
+  const cities = useSelector(store => store.cityReducer.cities)
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/cities')
-            .then(response => setCities(response.data.response.cities))
-            //eslint-disable-next-line
+      dispatch(citiesActions.mostrarCities())
     },[])
-    
-    console.log(cities)
-
+  
   const [buscador, setBuscador] = useState("");
   const [arrayfiltro, setArrrayFiltro] = useState(cities);
   console.log(arrayfiltro)
@@ -46,5 +45,6 @@ function AllCities() {
       </div>
     </div>
   );
+
 }
-export default AllCities;
+export default AllCities

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Signika+Negative&family=Space+Mono&display=swap');
+
+.container-itinerary {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: rgb(234, 229, 229);
+    /* box-shadow: 5px 5px 5px black; */
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.titulo-itinerary {
+    padding: 1rem;
+    font-family: 'Fjalla One', sans-serif;
+    /* color: red */
+
+}
+
+.img-desc {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 1rem;
+}
+
+.price {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin: 2rem auto;
+}
+
+.foto-manager {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.fav-boton {
+    /* width: 1000px !important; */
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0% !important;
+}
+
+
+.fav-icon {
+    width: 5px;
+    color: rgb(247, 87, 87);
+}
+
+.descripcion {
+    width: 60%;
+    margin: 0 auto 1rem;
+    
+}
+
+.acordion {
+    background-color: rgb(234, 229, 229) !important;
+}
+
+/* .accordion-button:focus {
+    box-shadow: none;
+} */
+@media (max-width: 1100px) {
+    .price {
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 750px) {
+    .price {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .container-itinerary {
+        width: 80%;
+    }
+}

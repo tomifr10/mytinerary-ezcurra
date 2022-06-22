@@ -57,7 +57,7 @@ const citiesControllers = {
         let citydb;
         let error = null;
         try {
-            citydb = await City.findOneAndUpdate({ _id:id }, city, { new:true })
+            citydb = await City.findOneAndUpdate({ _id:id }, city, { new:true }) //atraves de los metodos haces una query: consulta a la base de datos
         } catch  (err) { error = err }
         res.json({
             response: error ? 'ERROR' : citydb,

@@ -13,6 +13,20 @@
     font-size: 2.5rem;
 }
 
+.itineraries {
+    font-size: 2.5rem;
+    font-family: 'Fjalla One', sans-serif;
+    padding: 1rem;
+    /* border: 1px solid black; */
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto 3rem;
+    background-color: red;
+    color: white;
+
+
+}
+
 .foto-detail {
     width: 100%;
     height: 50vh;
