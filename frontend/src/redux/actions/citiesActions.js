@@ -16,11 +16,9 @@ const citiesActions = {
         }
     },
 
-    filtroCity: (input) => {
+    filtroCity: (buscador) => {
         return async(dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/cities/')
-            dispatch({type:'filtro', payload:res.data.response.cities})
-            
+            dispatch({type:'filtro', payload:buscador})
         }
     }
 }

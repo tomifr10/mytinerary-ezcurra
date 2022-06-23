@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Signika+Negative&family=Space+Mono&display=swap');
 
 .container-itinerary {
+
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -13,31 +14,60 @@
 .titulo-itinerary {
     padding: 1rem;
     font-family: 'Fjalla One', sans-serif;
+    margin-top: 2.5rem;
     /* color: red */
 
 }
 
+.data {
+    /* display: flex; */
+    width: 100%;
+}
+
+.foto-itinerary {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.data-itinerary {
+    width: 80%;
+    display: flex;
+    /* justify-content: space-between; */
+    margin: auto;
+    /* flex-direction: column; */
+}
+
 .img-desc {
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
+    width: 100%;
+    /* font-size: 1rem; */
+    /* flex-direction: column; */
+    /* width: 50%; */
+    justify-content: space-around;
     align-items: center;
     padding: 1rem;
 }
 
 .price {
     display: flex;
-    width: 50%;
+    width: 70%;
+    padding: 0 1rem;
     justify-content: space-between;
     font-size: 1.2rem;
-    margin: 2rem auto;
+    /* margin: 2rem auto; */
 }
 
 .foto-manager {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 20%;
     object-fit: cover;
+}
+
+.nombre-manager {
+    font-size: 1.5rem;
+    padding: 1rem;
 }
 
 .fav-boton {
@@ -54,9 +84,21 @@
 }
 
 .descripcion {
-    width: 60%;
-    margin: 0 auto 1rem;
+    width: 70%;
+    margin: 1rem auto;
+    font-size: 1.1rem;
     
+}
+
+.hashtags {
+    /* padding: .5rem; */
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+.hash {
+    padding: .5rem;
 }
 
 .acordion {
@@ -67,19 +109,28 @@
     box-shadow: none;
 } */
 @media (max-width: 1100px) {
-    .price {
-        width: 80% !important;
+    .data-itinerary {
+        width: 100% !important;
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
+    .img-desc {
+        flex-direction: column !important;
+    }
     .price {
-        flex-direction: column;
+        width: 100% !important;
     }
 }
 
 @media (max-width: 600px) {
     .container-itinerary {
-        width: 80%;
+        width: 90%;
+    }
+}
+
+@media (max-width: 520px) {
+    .price {
+        flex-direction: column !important;
     }
 }

@@ -35,7 +35,7 @@ function CardDetail() {
                 </div>
             </div>
             <h2 className='itineraries'>Itineraries</h2>
-            <Itinerary />
+            <Itinerary id={id}/>
         </>
     )
 }

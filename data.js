@@ -73,11 +73,11 @@
     },
     {
         "name":"Niagara Falls",
-        "managerName":"Allen ",
+        "managerName":"Allen Rice",
         "managerPhoto":"https://iteragrow.com/wp-content/uploads/2018/04/buyer-persona-e1545248524290.jpg",
         "price": 3,
         "duration":"4",
-        "hashtags":["#quebec", "#city", "#historique", "#french"],
+        "hashtags":["#toronto", "#city", "#niagara", "#fall"],
         "likes":[],
         "city":"id"
     },

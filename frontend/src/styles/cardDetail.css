@@ -56,3 +56,9 @@
     color: white;
     border: none;
 }
+
+@media (max-width:900px) {
+    .itineraries {
+        margin: 3rem auto;
+    }
+}

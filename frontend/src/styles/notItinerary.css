@@ -1,0 +1,21 @@
+.img {
+    width: 25%;
+    margin-bottom: 3rem;
+}
+
+.not-yet {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width:900px) {
+    .img {
+        width: 40%;
+    }
+}
+
+@media (max-width:500px) {
+    .img {
+        width: 60%;
+    }
+}

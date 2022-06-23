@@ -51,7 +51,7 @@ const itinerariesControllers = {
     },
 
     addItinerary: async (req,res) => {
-        const { name, managerName, managerPhoto, price, duration, hashtags, likes, city } = req.body.data;
+        const { name, managerName, managerPhoto, price, duration, hashtags, likes, city, description, itineraryPhoto } = req.body.data;
         let itinerary;
         let error;
         try {
@@ -63,7 +63,9 @@ const itinerariesControllers = {
                 duration:duration,
                 hashtags:hashtags,
                 likes:likes,
-                city:city
+                city:city,
+                description:description,
+                itineraryPhoto:itineraryPhoto
             }).save();
         } catch(err) {
             error = err;

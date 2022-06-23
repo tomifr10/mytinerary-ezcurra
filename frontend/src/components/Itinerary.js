@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { useEffect } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -6,26 +7,63 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Button from '@mui/material/Button';
+import NotItinerary from '../components/NotItinerary'
+import { useDispatch, useSelector } from 'react-redux';
+import itinerariesActions from '../redux/actions/itinerariesActions';
 import '../styles/itinerary.css';
 
 
-function Itinerary() {
+function Itinerary({id}) {
+
+    const dispatch = useDispatch()
+    const itineraries = useSelector(store => store.itineraryReducer.itineraries)
+    console.log(itineraries)
+
+    useEffect(()=> {
+        dispatch(itinerariesActions.itinerariesFromCity(id))
+    },[])
+
+    // const [newPrice, setnewPrice] = useState("")
+    // let p;
+    let priceEmoji = "🍁";
+    // let price = itineraries.map(itinerary => (itinerary.price))
+    // console.log(price)
+    // for(let i=0; i < price.length; i++) {
+    //    p = priceEmoji.repeat(price[i]);
+    // }
+    // useEffect(()=>{
+    //     setnewPrice(p)
+
+    // },[])
+    // console.log(newPrice)
+    // let totalPriceEmoji = price.forEach(num => num)//priceEmoji.repeat(num));
+    // console.log(totalPriceEmoji)
+
     return (
+        <div>
+        {itineraries.length !== 0 ? (
+        itineraries.map((itinerary,index) => (
+    <div key={index}>
+        <h2 className='titulo-itinerary'>{itinerary.name}</h2>
         <div className='container-itinerary'>
-            <h2 className='titulo-itinerary'>National Park</h2>
-            <div className='img-desc'>
-                <div className='manager'>
-                    <img className='foto-manager' alt='foto-manager' src='https://sanmartininforma.gob.ar/wp-content/uploads/2020/10/plantan-en-pnl.jpg' />
-                    <h3 className='nombre-manager'>Aaron Gray</h3>
+            <div className='data'>
+                <img className='foto-itinerary' alt="foto-itinerary" src={itinerary.itineraryPhoto}/>
+                <div className='data-itinerary'>
+                    <div className='img-desc'>
+                        <div className='manager'>
+                            <img className='foto-manager' alt='foto-manager' src={itinerary.managerPhoto}/>
+                            <h3 className='nombre-manager'>{itinerary.managerName}</h3>
+                        </div>
+                        <div className='price'>
+                            <p>Price: {priceEmoji.repeat(itinerary.price)}</p>
+                            <p>Duration: {itinerary.duration}hrs</p>
+                            <p><Button className='fav-boton' variant="outlined" startIcon={<FavoriteBorderIcon className='fav-icon'/>}></Button> 0</p>
+                        </div>
+                    </div>
                 </div>
-                <div className='price'>
-                    <p>Price: 🍁🍁🍁</p>
-                    <p>Duration: 5hrs</p>
-                    <p><Button className='fav-boton' variant="outlined" startIcon={<FavoriteBorderIcon className='fav-icon'/>}></Button> 0</p>
-                </div>
+                    <p className='descripcion'>{itinerary.description}</p>
+                    <div className='hashtags'>{itinerary.hashtags.map(hash => <p className='hash'>{hash}</p>)}</div>
             </div>
-                <p className='descripcion'>National Park Experiences is a curated collection that brings the stories of our National Parks to life. Each experience offers an authentic insight into the landscape and special qualities of a National Park.</p>
-            <p>#canada #nationalpark #forrest #wild</p>
             <Accordion className='acordion'>
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -35,13 +73,13 @@ function Itinerary() {
                 <Typography style={{margin: 'auto'}}>See more</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    malesuada lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
+                <Typography sx={{fontSize:'1.5rem'}}>Soon new activities!!</Typography>
                 </AccordionDetails>
             </Accordion>
         </div>
+    </div>
+            ))) : <NotItinerary/>}
+    </div>
     )
 }
 export default Itinerary

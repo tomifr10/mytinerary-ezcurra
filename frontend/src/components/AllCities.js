@@ -10,26 +10,18 @@ function AllCities() {
 
   const dispatch = useDispatch()
   const cities = useSelector(store => store.cityReducer.cities)
-
-    useEffect(() => {
-      dispatch(citiesActions.mostrarCities())
-    },[])
-  
+  const cityFiltred = useSelector(store => store.cityReducer.filtro)
   const [buscador, setBuscador] = useState("");
-  const [arrayfiltro, setArrrayFiltro] = useState(cities);
-  console.log(arrayfiltro)
+
+  useEffect(() => {
+    dispatch(citiesActions.mostrarCities())
+    dispatch(citiesActions.filtroCity(buscador))
+  },[buscador, cities]);
   
   function busqueda(e) {
     setBuscador(e.target.value);
   }
   
-  useEffect(() => {
-    let ciudadFiltrada = cities.filter(ciudad => 
-        ciudad.name.toLowerCase().startsWith(buscador.trim().toLowerCase()));
-        setArrrayFiltro(ciudadFiltrada)
-  },[buscador, cities]);
-
-
   return (
     <div>
       <h2 className="titulo-cities">Cities</h2>
@@ -41,7 +33,7 @@ function AllCities() {
         </svg>
         <input placeholder="Search" type="search" className="input" onKeyUp={busqueda} />
       </div>
-      <div className="container-cities"> {arrayfiltro && arrayfiltro?.length !== 0 ? <PrintCities Array={arrayfiltro} /> : <NotFound/> }
+      <div className="container-cities"> {cityFiltred && cityFiltred?.length !== 0 ? <PrintCities Array={cityFiltred} /> : <NotFound/> }
       </div>
     </div>
   );
