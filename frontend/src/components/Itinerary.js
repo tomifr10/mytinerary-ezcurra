@@ -23,21 +23,7 @@ function Itinerary({id}) {
         dispatch(itinerariesActions.itinerariesFromCity(id))
     },[])
 
-    // const [newPrice, setnewPrice] = useState("")
-    // let p;
     let priceEmoji = "🍁";
-    // let price = itineraries.map(itinerary => (itinerary.price))
-    // console.log(price)
-    // for(let i=0; i < price.length; i++) {
-    //    p = priceEmoji.repeat(price[i]);
-    // }
-    // useEffect(()=>{
-    //     setnewPrice(p)
-
-    // },[])
-    // console.log(newPrice)
-    // let totalPriceEmoji = price.forEach(num => num)//priceEmoji.repeat(num));
-    // console.log(totalPriceEmoji)
 
     return (
         <div>
