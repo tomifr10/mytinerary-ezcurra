@@ -1,10 +1,11 @@
 import Navbar from './components/Navbar';
 import Footer from "./components/Footer"
-import Index from './pages/Index'
-import Cities from './pages/Cities'
+import Index from './pages/Index';
+import Cities from './pages/Cities';
 import CardDetail from './pages/CardDetail';
+import SignIn from './components/SignIn';
 import './styles/App.css';
-import './styles/navbar.css'
+import './styles/navbar.css';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Index/>}/>
         <Route path="/cities" element={<Cities/>}/>
         <Route path="/CardDetail/:id" element={<CardDetail/>}/>
+        <Route path="/signIn" element={<SignIn/>}/>
       </Routes>
       <Footer />
     </div>

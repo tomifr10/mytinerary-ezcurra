@@ -15,7 +15,7 @@ import { Link as LinkRoute} from "react-router-dom";
 import "../styles/navbar.css";
 
 const pages = [{ to: "/", name: "Home", id: 1 }, { to: "/Cities", name: "Cities", id: 2}];
-const settings = ["Log in", "Sign Up"];
+const settings = [{to: "/signIn", name: "Log in", id:1}, {to: "/signIn", name: "Sign Up", id:2}];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -173,9 +173,9 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <LinkRoute className="settings" to={setting.to} key={setting.id} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.name}</Typography>
+                </LinkRoute>
               ))}
             </Menu>
           </Box>

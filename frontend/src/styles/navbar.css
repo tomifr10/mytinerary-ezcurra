@@ -11,6 +11,18 @@
     object-fit: cover;
 }
 
+/* .settings {
+    padding: 1px;
+    margin-left: 5px;
+    width: 20px;
+    width: fit-content;
+} */
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    /* width: 50px; */
+    padding: 5px;
+}
+
 .MuiButton-textSizeMedium {
     color: white !important;
 }

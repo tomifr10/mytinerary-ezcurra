@@ -21,9 +21,9 @@
     gap: 1rem;
 }
 
-.ciudad {
+.ciudad-carousel {
     margin: auto;
-    width: 400px;
+    width: 35%;
     height: auto;
     background-color: rgba(240, 237, 237, 0.555);
 }

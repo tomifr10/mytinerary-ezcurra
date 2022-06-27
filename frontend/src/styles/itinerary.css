@@ -93,12 +93,15 @@
 .hashtags {
     /* padding: .5rem; */
     display: flex;
+    flex-wrap: wrap;
     width: fit-content;
     margin: auto;
+    justify-content: center;
 }
 
 .hash {
     padding: .5rem;
+    width: fit-content;
 }
 
 .acordion {

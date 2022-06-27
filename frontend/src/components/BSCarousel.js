@@ -31,7 +31,7 @@ export default function BSCarousel() {
         {Data.canada.map((cadaArray, index) => (
           <Box className="slide" key={index}>
             {cadaArray.provincia.map((cadaCiudad) => (
-              <Box className="ciudad" key={cadaCiudad.id}>
+              <Box className="ciudad-carousel" key={cadaCiudad.id}>
                 <img
                   src={process.env.PUBLIC_URL+ `${cadaCiudad.imagen}`}
                   alt="Foto-ciudad"

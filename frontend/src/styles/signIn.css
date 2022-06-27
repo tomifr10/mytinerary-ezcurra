@@ -1,0 +1,45 @@
+.container-sign {
+    /* background-image: url('https://eligecanada.com/wp-content/uploads/2020/06/vivir-en-canada-2021-oportunidades.jpg'); */
+    /* object-fit: fill; */
+    position: absolute;
+    /* display: flex; */
+    background-color: rgb(177, 174, 174);
+    color: white;
+    /* justify-content: center; */
+    width: 50%;
+    height: fit-content;
+    top: 25%;
+    left: 25%;
+}
+
+.foto-sign {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link.active {
+    background-color: red !important;
+}
+
+.btn-link {
+    color: red !important;
+}
+
+.form-control {
+    width: 60%;
+    margin: auto
+}
+
+.form-check-input {
+    background-color: red !important;
+}
+
+.form-select {
+    width: 60%;
+    margin: auto;
+}
