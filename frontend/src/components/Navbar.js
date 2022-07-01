@@ -15,7 +15,7 @@ import { Link as LinkRoute} from "react-router-dom";
 import "../styles/navbar.css";
 
 const pages = [{ to: "/", name: "Home", id: 1 }, { to: "/Cities", name: "Cities", id: 2}];
-const settings = [{to: "/signIn", name: "Log in", id:1}, {to: "/signIn", name: "Sign Up", id:2}];
+const settings = [{to: "/signIn", name: "Log in", id:1}, {to: "/signUp", name: "Sign Up", id:2}];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

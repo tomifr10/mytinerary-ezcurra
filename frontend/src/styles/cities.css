@@ -6,14 +6,16 @@
 }
 
 .contenedor-cities {
-    position: absolute;
-    top: 50%;
-    left: 20%;
+    background-image: url('https://images.pexels.com/photos/997462/pexels-photo-997462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
     object-fit: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5vh;
 }
 
 .h2 {
@@ -78,25 +80,3 @@
   .button:hover .box:before {
     transform: translateY(0);
   }
-
-@media(max-width: 1250px) {
-    .contenedor-cities {
-        left: 12%;
-    }
-    
-}  
-
-@media(max-width: 1100px) {
-    .contenedor-cities {
-        left: 8%;
-    }
-    
-} 
-
-@media(max-width: 900px) {
-    .contenedor-cities {
-        left: 3%;
-    }
-    
-} 
-  

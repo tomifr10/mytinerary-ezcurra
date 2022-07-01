@@ -15,7 +15,7 @@ function Cities() {
         // "document.documentElement.scrollTo" is the magic for React Router Dom v6
         if(estadoBoton !== 0) {
             document.documentElement.scrollTo({
-              top: 500,
+              top: 650,
               left: 0,
               behavior: "smooth", // Optional if you want to skip the scrolling animation
             });
@@ -25,7 +25,7 @@ function Cities() {
 
     return (
         <>
-            <img className="foto-cities" alt="foto-cities" src="https://images.pexels.com/photos/997462/pexels-photo-997462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
+            {/* <img className="foto-cities" alt="foto-cities" src="https://images.pexels.com/photos/997462/pexels-photo-997462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/> */}
             <div className="contenedor-cities">
                 <h2 className="h2">Discover the canadian experience</h2>
                 <div className="button" onClick={CambiarEstado}>
