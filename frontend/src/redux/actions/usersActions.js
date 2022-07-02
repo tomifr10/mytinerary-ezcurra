@@ -29,7 +29,7 @@ const usersActions = {
             );
             console.log(res)
             if (res.data.success) {
-                //localStorage.setItem("token", res.data.response.token);
+                localStorage.setItem("token", res.data.response.token);
                 dispatch({
                     type: "user",
                     payload: res.data.response.userData,
@@ -47,6 +47,40 @@ const usersActions = {
             return res
         };
     },
+
+    tokenVerification: (token) => {
+        return async (dispatch, getState) => {
+            await axios.get('http://localhost:4000/api/auth/signInToken', {
+                headers: {'Authorization': 'Bearer ' + token}})
+                .then(user => {if(user.data.success) {
+                    dispatch({ type: 'user', payload: user.data.response });
+                    dispatch({ type: 'message',
+                                payload: {
+                                    view: true,
+                                    message: user.data.message,
+                                    success: user.data.success
+                                }});
+                                console.log(user)
+                } else {localStorage.removeItem('token')}}
+                ).catch(err => {
+                    if(err.response.status === 401) {
+                        dispatch({type: 'message', payload: {
+                            view: true,
+                            message: 'Please make the Sign-In again',
+                            success: false
+                        }});
+                    } else {localStorage.removeItem('token')}
+                })
+        }
+    },
+
+    signOutUser: () => {
+        return async (dispatch, getState) => {
+            // const user = axios.post('http://localhost:4000/api/auth/sigOut', { closeData });
+            localStorage.removeItem('token');
+            dispatch({ type: 'user', payload: null })
+        }
+    }
 };
 
 export default usersActions; 

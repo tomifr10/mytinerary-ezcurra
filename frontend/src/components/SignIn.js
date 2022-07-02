@@ -37,8 +37,8 @@ export default function SignIn() {
                 <p className="with">Log in with:</p>
                 <div>
                     <GoogleSignIn/>
-                  <MDBIcon icon="google" className="redes-form" />
-                  <MDBIcon icon="facebook" className="redes-form" />
+                  {/* <MDBIcon icon="google" className="redes-form" />
+                  <MDBIcon icon="facebook" className="redes-form" /> */}
                 </div>
                 <p className="or">or:</p>
               </div>

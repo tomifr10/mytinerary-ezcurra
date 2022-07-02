@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link as LinkRoute} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import usersActions from '../redux/actions/usersActions'
 import "../styles/navbar.css";
 
 const pages = [{ to: "/", name: "Home", id: 1 }, { to: "/Cities", name: "Cities", id: 2}];
@@ -20,6 +22,9 @@ const settings = [{to: "/signIn", name: "Log in", id:1}, {to: "/signUp", name: "
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const dispatch = useDispatch();
+  const user = useSelector(store => store.usersReducer.user);
+  console.log(user)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,7 +38,9 @@ const Navbar = () => {
   };
 
   const handleCloseUserMenu = () => {
+    dispatch(usersActions.signOutUser())
     setAnchorElUser(null);
+
   };
 
   return (
@@ -153,7 +160,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/1280px-Flag_of_Canada_%28Pantone%29.svg.png" />
+                <Avatar alt="Remy Sharp" src={(user !== null) ? user.photo : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/1280px-Flag_of_Canada_%28Pantone%29.svg.png"} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -172,11 +179,17 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {(user !== null) ?
+                <LinkRoute className="settings" to="/home" key="3" onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Log out</Typography>
+                </LinkRoute>
+             :
+              settings.map((setting) => (
                 <LinkRoute className="settings" to={setting.to} key={setting.id} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting.name}</Typography>
                 </LinkRoute>
-              ))}
+                ))
+            }
             </Menu>
           </Box>
         </Toolbar>

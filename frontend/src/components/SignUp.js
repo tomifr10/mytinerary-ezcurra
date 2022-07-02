@@ -25,9 +25,15 @@ export default function SignUp() {
 
         };
         const res = await dispatch(usersActions.signUpUser(userData));
-        console.log(res.data.message)
-        if(res.data.message.length !== 0) {
+        console.log(res.data.message.length)
+        if(res.data.from === "validator" ) {
           res.data.message.map(message => toast.error(message.message))
+        } else {
+          if(res.data.success) {
+            toast.success(res.data.message)
+          } else {
+            toast.error(res.data.message)
+          }
         }
     console.log(userData);
   };
@@ -52,8 +58,8 @@ export default function SignUp() {
                 <p className="with">Sign up with:</p>
                 <div>
                   <GoogleSignUp/>
-                  <MDBIcon icon="google" className="redes-form" />
-                  <MDBIcon icon="facebook" className="redes-form" />
+                  {/* <MDBIcon icon="google" className="redes-form" />
+                  <MDBIcon icon="facebook" className="redes-form" /> */}
                 </div>
                 <p className="or">or:</p>
               </div>

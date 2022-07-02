@@ -3,10 +3,11 @@ const validator = require('../validator')
 const citiesControllers = require('../controllers/cityControllers'); //requiero los controladores
 const itinerariesControllers = require('../controllers/itineraryControllers');
 const usersControllers = require('../controllers/userControllers');
+const passport = require('../config/passport');
 
 const { getCities, getOneCity, addCity, modifyCity, removeCity } = citiesControllers; //desestructuro los controladores
 const { getOneItinerary, getItineraries, addItinerary, modifyItinerary, deleteItinerary, findItineraryFromCity } = itinerariesControllers;
-const { signUp, signIn } = usersControllers;
+const { signUp, signIn, verifyMail, tokenVerification, signOutUser } = usersControllers;
 
 Router.route('/cities')
 .get(getCities)
@@ -35,5 +36,11 @@ Router.route('/auth/signup')
 
 Router.route('/auth/signin')
 .post(signIn)
+
+Router.route('/verify/:string')
+.get(verifyMail)
+
+Router.route('/auth/signInToken')
+.get(passport.authenticate('jwt', {session: false}), tokenVerification)
 
 module.exports = Router //exporto las rutas para requerirlas en server

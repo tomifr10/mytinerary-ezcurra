@@ -9,8 +9,22 @@ import { Toaster } from 'react-hot-toast'
 import './styles/App.css';
 import './styles/navbar.css';
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import usersActions from './redux/actions/usersActions'
+
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(localStorage.getItem('token') !== null) {
+      const token = localStorage.getItem('token');
+      dispatch(usersActions.tokenVerification(token))
+    }
+  },[])
+
   return (
     <div className="App">
       <Navbar />
@@ -27,10 +41,10 @@ function App() {
           className: '',
           style: {
             boxShadow: "0px 3px 10px rgba(8, 8, 8, 0.413)",
-            padding: '8px',
+            padding: '.8rem',
             color: 'black',
             textAlign: "center",
-            fontSize: "13px",
+            fontSize: "1rem",
           },
         }} />
       <Footer />

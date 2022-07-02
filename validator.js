@@ -10,8 +10,8 @@ const validator = (req, res, next) => {
             .pattern(new RegExp('[a-zA-Z]'))
             .required()
             .messages({
-                'string.min': 'Firstname: min 3 characters.',
-                'string.max': 'Firstname: max 20 characters.'}),
+                'string.min': 'Firstname needs min 3 characters.',
+                'string.max': 'Firstname allows max 20 characters.'}),
         lastName: joi.string()
             .min(3)
             .max(20)
@@ -19,27 +19,27 @@ const validator = (req, res, next) => {
             .pattern(new RegExp('[a-zA-Z]'))
             // .required()
             .messages({
-                'string.min': '"Lastname": min 3 characters.',
-                'string.max': '"Lastname": max 20 characters.'}),
+                'string.min': 'Lastname needs min 3 characters.',
+                'string.max': 'Lastname allows max 20 characters.'}),
         photo: joi.string()
             .min(10)
             .trim()
             .required()
             .messages({
-                'string.photo': '"Photo": url need at least 10 characters.'}),
+                'string.min': 'Photo url need at least 10 characters.'}),
         email: joi.string()
             .email({minDomainSegments:2})
             .required()
             .messages({
-                'string.email': '"mail": incorrect format.'}),
+                'string.email': 'Email formar is incorrect.'}),
         password: joi.string()
             .min(8)
-            .max(30)
+            .max(40)
             .pattern(new RegExp('[a-zA-Z0-9]'))
             .required()
             .messages({
-                'string.min': '"password": min 8 characters.',
-                'string.max': '"password": max 30 characters.'}),
+                'string.min': 'Password needs min 8 characters.',
+                'string.max': 'Password allows max 30 characters.'}),
         country: joi.string()
             .required(),
         from: joi.string()

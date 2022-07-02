@@ -13,6 +13,7 @@ const GoogleSignIn = () => {
         const res = await dispatch(userActions.signInUser({
             email: userObject.email,
             password: userObject.sub,
+            photo: userObject.picture,
             from: "Google"
         }));
         if (res.data.success) {

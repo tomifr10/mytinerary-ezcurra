@@ -24,7 +24,7 @@ const GoogleSignUp = () => {
         } else {
             toast.error(res.data.message)
         }
-        console.log(res.data.message)
+        // console.log(res.data.message)
     }
 
 useEffect(()=> {
@@ -36,10 +36,10 @@ useEffect(()=> {
 
     google.accounts.id.renderButton(
         document.getElementById('buttonDiv'),
-        { theme: "outline", size: "medium", locale:'en', shape:"pill", type: "icon" }
-    )
+        { theme: "outline", size: "medium", locale:'en', shape:"pill",  }
+        )
 })
-
+// type: "icon"
   return (
     <div>
         <div id='buttonDiv'></div>
