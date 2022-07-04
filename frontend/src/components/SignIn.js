@@ -1,7 +1,5 @@
 import React from "react";
 import "../styles/signIn.css";
-// import { useState, useEffect } from "react";
-import { MDBIcon } from "mdbreact";
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import usersActions from '../redux/actions/usersActions';
@@ -40,8 +38,6 @@ export default function SignIn() {
                 <p className="with">Log in with:</p>
                 <div>
                     <GoogleSignIn/>
-                  {/* <MDBIcon icon="google" className="redes-form" />
-                  <MDBIcon icon="facebook" className="redes-form" /> */}
                 </div>
                 <p className="or">or:</p>
               </div>

@@ -5,7 +5,6 @@ import Cities from './pages/Cities';
 import CardDetail from './pages/CardDetail';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import WithGoogle from './components/WithGoogle';
 import { Toaster } from 'react-hot-toast';
 import './styles/App.css';
 import './styles/navbar.css';
@@ -24,7 +23,7 @@ function App() {
       const token = localStorage.getItem('token');
       dispatch(usersActions.tokenVerification(token))
     }
-  },[])
+  })
 
   return (
     <div className="App">

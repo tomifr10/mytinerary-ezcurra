@@ -28,8 +28,6 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector(store => store.usersReducer.user);
   const userMessage = useSelector(store => store.usersReducer.popup);
-  console.log(userMessage.success)
-  console.log(contador)
 
   useEffect(() => {
     if(userMessage?.success === true && contador === 0) {
