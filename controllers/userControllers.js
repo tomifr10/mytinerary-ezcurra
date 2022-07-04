@@ -163,7 +163,7 @@ const usersControllers = {
             if(req.user){
             res.json({success:true,
                       response:{id:req.user.id, firstName:req.user.firstName, email:req.user.email, photo:req.user.photo, from:"token"},
-                      message:"Welcome back "+ req.user.firstName + "."}),
+                      message:"Welcome back " + req.user.firstName + "."}),
                       console.log(res.json)
             }else{
                 res.json({success:false,

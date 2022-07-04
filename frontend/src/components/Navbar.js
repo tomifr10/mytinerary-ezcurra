@@ -203,7 +203,7 @@ const Navbar = () => {
              :
               settings.map((setting) => (
                 <LinkRoute className="settings" to={setting.to} key={setting.id} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting.name}</Typography>
+                  <Typography textAlign="center" padding='5px' fontWeight="600">{setting.name}</Typography>
                 </LinkRoute>
                 ))
             }
