@@ -63,7 +63,7 @@ input {
     object-fit: cover;
 }
 
-.paices {
+.paices-form {
     text-align: center;
     width: 40%;
 }
@@ -71,5 +71,14 @@ input {
 @media(max-width:800px) {
     form {
         width: 90%;
+    }
+
+    input {
+        width: 60%;
+        /* margin: .5rem; */
+    }
+
+    .paices-form {
+        width: 60%;
     }
 }

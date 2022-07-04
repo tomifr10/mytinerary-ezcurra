@@ -2,35 +2,37 @@ import React from "react";
 import "../styles/signup.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { MDBIcon } from "mdbreact";
 import { useDispatch } from 'react-redux';
 import usersActions from '../redux/actions/usersActions';
-import GoogleSignUp from "./GoogleSignUp";
 import toast from 'react-hot-toast';
+import WithGoogle from '../components/WithGoogle';
+import { useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
  
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const userData = {
-            firstName: event.target[0].value,
-            lastName: event.target[1].value,
-            photo: event.target[2].value,
-            email: event.target[3].value,
-            country: event.target[4].value,
-            password: event.target[5].value,
+            firstName: event.target[1].value,
+            lastName: event.target[2].value,
+            photo: event.target[3].value,
+            email: event.target[4].value,
+            country: event.target[5].value,
+            password: event.target[6].value,
             from: "form-signup"
-
         };
+
         const res = await dispatch(usersActions.signUpUser(userData));
         console.log(res.data.message.length)
         if(res.data.from === "validator" ) {
           res.data.message.map(message => toast.error(message.message))
         } else {
           if(res.data.success) {
-            toast.success(res.data.message)
+            toast.success(res.data.message);
+            navigate("/signIn")
           } else {
             toast.error(res.data.message)
           }
@@ -56,8 +58,10 @@ export default function SignUp() {
             <form onSubmit={handleSubmit}>
               <div className="logos">
                 <p className="with">Sign up with:</p>
-                <div>
-                  <GoogleSignUp/>
+                {/* <LinkRoute to="/googleSignUp" className="boton"><MDBIcon icon="google" className="redes-form" /></LinkRoute> */}
+                <WithGoogle/>
+                <div >
+                  {/* <GoogleSignUp/> */}
                   {/* <MDBIcon icon="google" className="redes-form" />
                   <MDBIcon icon="facebook" className="redes-form" /> */}
                 </div>
@@ -88,7 +92,7 @@ export default function SignUp() {
                 </label>
               </div>
               <div className="container-input">
-                <select className="paices">
+                <select className="paices-form">
                   <option className="option"></option>
                   {paicesOrdenados?.map((pais, id) => (
                     <option className="option" key={id} value={pais}>

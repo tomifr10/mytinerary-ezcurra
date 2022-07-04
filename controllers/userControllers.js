@@ -77,7 +77,7 @@ const usersControllers = {
                         success: false,
                         message: "Your user has not been registered, perform the Sign-up."
                     })
-                } else {
+                } else if(userExist.verification) {
                     let passwordMatch = userExist.password.filter(pass => bcryptjs.compareSync(password, pass));
                     if(from !== "form-signup") {
                         if(passwordMatch.length > 0) {
@@ -127,6 +127,12 @@ const usersControllers = {
                             })
                         }
                     }
+                } else {
+                    res.json({
+                        success: false,
+                        from: from,
+                        message: "Email must be verified."
+                    })
                 }
             } catch(error) {
                 res.json({
@@ -156,42 +162,14 @@ const usersControllers = {
         tokenVerification:(req, res) => {
             if(req.user){
             res.json({success:true,
-                      response:{id:req.user.id, firstName:req.user.firstName, email:req.user.email, from:"token"},
-                      message:"Welcome back "+req.user.fistName}) 
+                      response:{id:req.user.id, firstName:req.user.firstName, email:req.user.email, photo:req.user.photo, from:"token"},
+                      message:"Welcome back "+ req.user.firstName + "."}),
+                      console.log(res.json)
             }else{
                 res.json({success:false,
                 message:"Please make the Sign-In again signIn"}) 
             }
         }
-    //     const sendVerification = async (email, uniqueString) => {
-    //         const transporter = nodemailer.createTransport({
-    //             host: 'smtp.gmail.com',
-    //             port: 465,
-    //             secure: true,
-    //             auth: {
-    //                 user: "my.ty.borraz@gmail.com",
-    //                 pass: "Hola1234"
-    //             }
-    //         })
-    //         let mailOptions = {
-    //             from: 'my.ty.borraz@gmail.com',
-    //             to: email,
-    //             subject: "verify MyTinerary account",
-    //             html: `
-    //             <div>
-    //                 <h1><a href=https://mytinerary-borraz.herokuapp.com/api/verify/${uniqueString} style="color:red">CLICK!</a> to confirm you account.</h1>
-    //                 <h2>Thanks for signing up!</h2>
-    //                 <br>
-    //                 <h3>FIND YOUR PERFECT TRIP</h3>
-    //                 <h4>designed by insiders who know and love their cities!</h4>
-    //             </div>
-    //             `};
-    //         await transporter.sendMail(mailOptions, function (error, response) {
-    //             if (error) { console.log(error) }
-    //             else {
-    //                 console.log(`check ${email} to confirm your account`)
-    //             }
-    //         })
     }
 
 module.exports = usersControllers

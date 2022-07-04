@@ -5,7 +5,8 @@ import Cities from './pages/Cities';
 import CardDetail from './pages/CardDetail';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import { Toaster } from 'react-hot-toast'
+import WithGoogle from './components/WithGoogle';
+import { Toaster } from 'react-hot-toast';
 import './styles/App.css';
 import './styles/navbar.css';
 import { Route, Routes } from 'react-router-dom';

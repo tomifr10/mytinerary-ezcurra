@@ -6,10 +6,12 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import usersActions from '../redux/actions/usersActions';
 import GoogleSignIn from "./GoogleSignIn";
+import { useNavigate } from 'react-router-dom'
 
 export default function SignIn() {
     
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,9 +21,10 @@ export default function SignIn() {
             from: "form-signup"
         };
         const res = await dispatch(usersActions.signInUser(logedUser));
-        console.log(res.data.success);
+        console.log(res);
         if(res.data.success === true) {
-            toast.success(res.data.message)
+            toast.success(res.data.message);
+            navigate("/home")
         } else {
             toast.error(res.data.message)
         }

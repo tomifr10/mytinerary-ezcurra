@@ -13,34 +13,51 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link as LinkRoute} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import usersActions from '../redux/actions/usersActions'
+import usersActions from '../redux/actions/usersActions';
+import toast from 'react-hot-toast';
+import { useState, useEffect } from 'react';
 import "../styles/navbar.css";
 
 const pages = [{ to: "/", name: "Home", id: 1 }, { to: "/Cities", name: "Cities", id: 2}];
 const settings = [{to: "/signIn", name: "Log in", id:1}, {to: "/signUp", name: "Sign Up", id:2}];
 
 const Navbar = () => {
+  const [contador, setcontador] = useState(0);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const dispatch = useDispatch();
   const user = useSelector(store => store.usersReducer.user);
-  console.log(user)
+  const userMessage = useSelector(store => store.usersReducer.popup);
+  console.log(userMessage.success)
+  console.log(contador)
+
+  useEffect(() => {
+    if(userMessage?.success === true && contador === 0) {
+      toast.success(userMessage.message)
+    }
+  },[user]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+    setcontador(contador + 1);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+    setcontador(contador + 1);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    setcontador(contador + 1);
   };
 
   const handleCloseUserMenu = () => {
-    dispatch(usersActions.signOutUser())
     setAnchorElUser(null);
+    setcontador(contador + 1);
+  };
 
+  const logOut = () => {
+    dispatch(usersActions.signOutUser())
   };
 
   return (
@@ -180,7 +197,7 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               {(user !== null) ?
-                <LinkRoute className="settings" to="/home" key="3" onClick={handleCloseUserMenu}>
+                <LinkRoute className="settings" to="/home" key="3" onClick={logOut}>
                   <Typography textAlign="center">Log out</Typography>
                 </LinkRoute>
              :
