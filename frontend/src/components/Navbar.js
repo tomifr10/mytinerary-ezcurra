@@ -28,6 +28,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector(store => store.usersReducer.user);
   const userMessage = useSelector(store => store.usersReducer.popup);
+  console.log(contador)
 
   useEffect(() => {
     if(userMessage?.success === true && contador === 0) {
@@ -196,7 +197,7 @@ const Navbar = () => {
             >
               {(user !== null) ?
                 <LinkRoute className="settings" to="/home" key="3" onClick={logOut}>
-                  <Typography textAlign="center">Log out</Typography>
+                  <Typography textAlign="center" padding='5px' fontWeight="600">Log out</Typography>
                 </LinkRoute>
              :
               settings.map((setting) => (

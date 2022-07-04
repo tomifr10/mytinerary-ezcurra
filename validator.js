@@ -41,7 +41,10 @@ const validator = (req, res, next) => {
                 'string.min': 'Password needs min 8 characters.',
                 'string.max': 'Password allows max 30 characters.'}),
         country: joi.string()
-            .required(),
+            .required()
+            .messages({
+                'string.empty': 'Country cannot be empty.'
+            }),
         from: joi.string()
             .required()
     })

@@ -12,3 +12,11 @@
     font-size: 2rem;
 }
 
+@media(max-width: 700px) {
+.paices-modal {
+    width: 80%;
+}
+.css-15edzf2 {
+    width: 80% !important;
+}
+}

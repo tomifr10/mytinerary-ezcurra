@@ -7,7 +7,7 @@ const passport = require('../config/passport');
 
 const { getCities, getOneCity, addCity, modifyCity, removeCity } = citiesControllers; //desestructuro los controladores
 const { getOneItinerary, getItineraries, addItinerary, modifyItinerary, deleteItinerary, findItineraryFromCity } = itinerariesControllers;
-const { signUp, signIn, verifyMail, tokenVerification, signOutUser } = usersControllers;
+const { signUp, signIn, verifyMail, tokenVerification } = usersControllers;
 
 Router.route('/cities')
 .get(getCities)

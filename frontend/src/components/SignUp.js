@@ -58,12 +58,8 @@ export default function SignUp() {
             <form onSubmit={handleSubmit}>
               <div className="logos">
                 <p className="with">Sign up with:</p>
-                {/* <LinkRoute to="/googleSignUp" className="boton"><MDBIcon icon="google" className="redes-form" /></LinkRoute> */}
                 <WithGoogle/>
                 <div >
-                  {/* <GoogleSignUp/> */}
-                  {/* <MDBIcon icon="google" className="redes-form" />
-                  <MDBIcon icon="facebook" className="redes-form" /> */}
                 </div>
                 <p className="or">or:</p>
               </div>
