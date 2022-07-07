@@ -30,11 +30,11 @@ const Navbar = () => {
   const userMessage = useSelector(store => store.usersReducer.popup);
   console.log(contador)
 
-  useEffect(() => {
     if(userMessage?.success === true && contador === 0) {
       toast.success(userMessage.message)
+    } else if(userMessage.view === true && userMessage?.success === false && contador === 0) {
+      toast.error(userMessage.message)
     }
-  },[user]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

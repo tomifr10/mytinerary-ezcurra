@@ -10,8 +10,8 @@ import './styles/App.css';
 import './styles/navbar.css';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import usersActions from './redux/actions/usersActions'
+import { useDispatch, useSelector } from 'react-redux';
+import usersActions from './redux/actions/usersActions';
 
 
 function App() {
@@ -23,7 +23,9 @@ function App() {
       const token = localStorage.getItem('token');
       dispatch(usersActions.tokenVerification(token))
     }
-  })
+  },[]);
+
+  const user = useSelector(store => store.usersReducer.user)
 
   return (
     <div className="App">
@@ -33,8 +35,8 @@ function App() {
         <Route path="/home" element={<Index/>}/>
         <Route path="/cities" element={<Cities/>}/>
         <Route path="/CardDetail/:id" element={<CardDetail/>}/>
-        <Route path="/signIn" element={<SignIn/>}/>
-        <Route path="/signUp" element={<SignUp/>}/>
+        {!user && <Route path="/signIn" element={<SignIn/>}/>}
+        {!user && <Route path="/signUp" element={<SignUp/>}/>}
       </Routes>
         <Toaster
         toastOptions={{

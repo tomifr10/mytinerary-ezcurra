@@ -10,8 +10,11 @@ const itinerarySchema = new mongoose.Schema({
     duration:{type:String, required:true},
     hashtags:{type:Array, required:true},
     likes:{type:Array, required:true},
+    comments: [{
+        comment: {type: String},
+        userId: {type:mongoose.Types.ObjectId, ref:'users'}
+    }],
     city:{type:mongoose.Types.ObjectId, ref:'cities'}
-    // activities:{}
 }) 
 const Itinerary = mongoose.model('itineraries', itinerarySchema); //metodo para crear un modelo de la coleccion city con la coleccion cities con esquema citySchema
 module.exports = Itinerary; //exporto para requerirlo/usarlo

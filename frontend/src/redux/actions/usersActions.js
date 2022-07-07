@@ -60,7 +60,7 @@ const usersActions = {
                                     message: user.data.message,
                                     success: user.data.success
                                 }});
-                                console.log(user)
+                                // console.log(user)
                 } else {localStorage.removeItem('token')}}
                 ).catch(err => {
                     if(err.response.status === 401) {
@@ -69,6 +69,7 @@ const usersActions = {
                             message: 'Please make the Sign-In again',
                             success: false
                         }});
+                        {localStorage.removeItem('token')}
                     } else {localStorage.removeItem('token')}
                 })
         }

@@ -51,7 +51,7 @@ const itinerariesControllers = {
     },
 
     addItinerary: async (req,res) => {
-        const { name, managerName, managerPhoto, price, duration, hashtags, likes, city, description, itineraryPhoto } = req.body.data;
+        const { name, managerName, managerPhoto, price, duration, hashtags, likes, city, description, itineraryPhoto, comments } = req.body.data;
         let itinerary;
         let error;
         try {
@@ -65,7 +65,8 @@ const itinerariesControllers = {
                 likes:likes,
                 city:city,
                 description:description,
-                itineraryPhoto:itineraryPhoto
+                itineraryPhoto:itineraryPhoto,
+                comments:comments
             }).save();
         } catch(err) {
             error = err;
@@ -108,6 +109,41 @@ const itinerariesControllers = {
             success: error ? false : true,
             error: error
         })
+    },
+
+    likeDislike: async (req,res) => {
+        //console.log(req)
+        const id = req.params.id //parametro por ruta
+        const user = req.user.id //parametro por passport
+        console.log(user);
+        console.log(id)
+
+        let itinerary;
+        try { 
+            itinerary = await Itinerary.findOne({ _id:id }) 
+            console.log(itinerary.likes)
+            if (itinerary.likes.includes(user)) {
+                Itinerary.findOneAndUpdate({ _id:id }, { $pull:{likes:user} }, { new:true })
+                    .then(response => res.json({
+                        response: response.likes, 
+                        success: true
+                    }))
+                    .catch(error => console.log(error))
+            } else {
+                Itinerary.findOneAndUpdate({ _id:id }, { $push:{likes:user} }, { new:true })
+                    .then(response => res.json({
+                        response: response.likes, 
+                        success: true
+                    }))
+                    .catch(error => console.log(error))
+            }
+        } catch (error) {
+            res.json({
+                response: error,
+                success: false,
+                console: console.log(error)
+            })
+        } 
     }
 }
 module.exports = itinerariesControllers
