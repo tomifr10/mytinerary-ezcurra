@@ -34,9 +34,6 @@ function Itinerary({id}) {
     };
     function openAct(event) {
         setcontador(contador + 1);
-    //    let valor = event.target;
-    //    valor = contador;
-    //    console.log(valor)
     }
 
     let priceEmoji = "🍁";

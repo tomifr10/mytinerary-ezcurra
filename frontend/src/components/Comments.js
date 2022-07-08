@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import toast from 'react-hot-toast';
+import '../styles/comments.css'
 
 
 function Comments({id}) {
@@ -15,12 +17,6 @@ function Comments({id}) {
     const [newButton,setNewButton] = useState(false);
     const user = useSelector(store => store.usersReducer.user);
 
-    // const addComment = dispatch(itinerariesActions.addComment)
-    // const modifyComment = dispatch(itinerariesActions.modifyComment)
-    // const deleteComment = dispatch(itinerariesActions.deleteComment)
-
-
-
     useEffect(() => {
         async function comments() {
             const res = await dispatch(itinerariesActions.findOneItinerary(id));
@@ -29,10 +25,13 @@ function Comments({id}) {
         };
         comments()
     }, [reload])
-    // let ids = itineraries?.comments.map(comment => (comment.userId ))
-    // console.log(ids)
+    let ids = itineraries.comments?.map(comment => (comment.userId ))
+    console.log(ids)
 
     async function toAdd(event) {
+        if(!user) {
+            toast.error('You have to be logged in');
+        } 
         const commentData = {
             itinId: itineraries?._id,
             comments: {
@@ -60,10 +59,6 @@ function Comments({id}) {
         setReload(!reload)
     }
 
-    // function toChangeInputs(event) {
-    //     setNewButton(true)
-    // }
-    
     async function toDelete(event) {
         await dispatch(itinerariesActions.deleteComment(event));
         setReload(!reload)
@@ -71,62 +66,44 @@ function Comments({id}) {
 
   return (
     <>  
-        <div>
-            <div style={{marginBottom: '1rem'}}>Comentarios</div>
-            <div><input onChange={(event) => setInputText(event.target.value)} value={inputText} type="text-area"/></div>
-            <button onClick={toAdd} >botton</button>
-            {/* { itineraries.comments?.map(comment => (<p>{comment.comment}</p>))} */}
-
-{/* 
-            {comments?.map((comment) =>
-                (props.user ?
-                    (props.user.id !== comment.userId._id ?  */}
+        <div className='container-padre'>
+            <h3 className='title-comment'><p>Opinions</p><p style={{fontSize: '1rem'}}>({itineraries.comments?.length})</p></h3>
+            <div className='div-input'><input className='input' onChange={(event) => setInputText(event.target.value)} value={inputText} type="text-area"/></div>
+            <button onClick={toAdd} className='boton-com' >Comment</button>
+            <div className='mapeo-com'>
 
             {itineraries.comments?.map(comment => (
                 (user ?
-                    ((comment.userId.includes(user?.id)) ? 
-                    <div>
-
-                        <div><input type="text-area" className="card-text textComments" onChange={(event) => setModifyCom(event.target.value)} />{comment.comment}</div>
-                            <button  onClick={()=>toModify(comment._id)} className="btn btn-primary btnComments">Modificar</button>
-                            <button  onClick={()=>toDelete(comment._id)} className="btn btn-primary btnComments">Eliminar</button>
-                        {/* <p>ACA PODRIA MODIFICARs-BORRAR</p> */}
+                    ((comment.userId._id.includes(user?.id)) ? 
+                    <div className='container-com'>
+                        <div className='foto-text'>
+                            <img className='photo' src={comment.userId.photo} />
+                            <div className='container-coment'>
+                                <input type="text-area" className="input" onChange={(event) => setModifyCom(event.target.value)} />
+                                <p className='coment'>{comment.comment}</p>
+                            </div>
+                        </div>
+                        <div className='container-botones'>
+                            <button  onClick={()=>toModify(comment._id)} className="boton-com">Modify</button>
+                            <button  onClick={()=>toDelete(comment._id)} className="boton-com">Delete</button>
+                        </div>
                     </div>
                     : 
-                    <p>{comment.comment}</p>
+                    <div className='foto-text-out'>
+                        <img className='photo' src={comment.userId.photo} />
+                        <p className='coment'>{comment.comment}</p>
+                    </div>
                 ) 
-                :  <p>{comment.comment}</p>)
+                :  
+                <div className='foto-text-out'>
+                    <img className='photo' src={comment.userId.photo} />
+                    <p className='coment'>{comment.comment}</p>
+                </div>)
             ))}
+            </div>
         </div>
 
     </>
   )
   }
 export default Comments
-
-// {place?.comments.map(comment =>
-//     <>
-//       {comment.userID?._id !== props.user?.id ?
-//         <div className="card cardComments " key={comment._id}>
-//           <div className="card-header cardHeader">
-//             <p>{comment.userID.fullName}</p> <p>{new Date(comment.date).toUTCString()}</p>
-//           </div>
-//           <div className="card-body">
-//             <p className="card-text cardText">{comment.comment}</p>
-//           </div>
-//         </div> :
-
-//         <div className="card cardComments">
-//           <div className="card-header cardHeader">
-//             <p>{comment.userID.fullName}</p> <p>{new Date(comment.date).toUTCString()}</p>
-//           </div>
-//           <div className="card-body ">
-
-//             <div type="text" className="card-text textComments" onInput={(event) => setModifi(event.currentTarget.textContent)} contentEditable >{comment.comment}</div>
-//             <button id={comment._id} onClick={modificarComentario} className="btn btn-primary btnComments">Modificar</button>
-//             <button id={comment._id} onClick={eliminarComentario} className="btn btn-primary btnComments">Eliminar</button>
-//           </div>
-//         </div>
-//       }
-//     </>
-//   )}

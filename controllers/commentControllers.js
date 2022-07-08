@@ -8,7 +8,7 @@ const commentControllers = {
         try {
             const newComment = await Itinerary
                 .findOneAndUpdate({_id:itinId}, {$push: {comments: comments}}, {new: true})
-                .populate("comments.userId", {name:1, email:1, itineraryPhoto:1})
+                // .populate("comments.userId", {firstName:1, email:1, photo:1})
             res.json({success: true,
                 response: {newComment},
                 message: "Comment added successfuly"})
@@ -26,7 +26,7 @@ const commentControllers = {
         const user = req.user._id
         try {
             const modifyComment = await Itinerary
-            .findOneAndUpdate({"comments._id": commentId}, {$set: {"comments": comments}}, {new: true})
+            .findOneAndUpdate({"comments._id": commentId}, {$set: {"comments.$.comment": comments.comment}}, {new: true})
             res.json({
                         success: true,
                         response: {modifyComment},
