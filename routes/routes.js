@@ -62,11 +62,11 @@ Router.route('/auth/signInToken')
 Router.route('/itineraries/likeDislike/:id')
 .put(passport.authenticate('jwt', {session:false}), likeDislike)
 
-Router.route('/itineraries/comment')
+Router.route('/comment')
 .post(passport.authenticate('jwt', {session: false}), addComment)
 .put(passport.authenticate('jwt', {session: false}), modifyComment)
 
-Router.route('/itineraries/comment/:id')
+Router.route('/comment/:id')
 .post(passport.authenticate('jwt', {session: false}), deleteComment)
 
 module.exports = Router //exporto las rutas para requerirlas en server

@@ -3,11 +3,11 @@ const Itinerary = require('../models/itinerary')
 const commentControllers = {
 
     addComment: async (req, res) => {
-        const {itinId,comments} = req.body.data
+        const {itinId,comments} = req.body
         const user = req.user._id
         try {
             const newComment = await Itinerary
-                .findOneAndUpdate({_id: itinId}, {$push: {comments: {comment: comments.comment, userId: user}}}, {new: true})
+                .findOneAndUpdate({_id:itinId}, {$push: {comments: comments}}, {new: true})
                 .populate("comments.userId", {name:1, email:1, itineraryPhoto:1})
             res.json({success: true,
                 response: {newComment},
@@ -21,11 +21,12 @@ const commentControllers = {
     },
 
     modifyComment: async (req, res) => {
-        const {commentId,comments} = req.body.data
+        console.log(req.body)
+        const {commentId,comments} = req.body
         const user = req.user._id
         try {
             const modifyComment = await Itinerary
-            .findOneAndUpdate({"comments._id": commentId}, {$set: {"comments.$.comment": comments.comment}}, {new: true})
+            .findOneAndUpdate({"comments._id": commentId}, {$set: {"comments": comments}}, {new: true})
             res.json({
                         success: true,
                         response: {modifyComment},

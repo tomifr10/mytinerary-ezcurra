@@ -26,7 +26,7 @@ const activitiesControllers = {
         } catch(err) {
             error = err;
         };
-        res.jason({
+        res.json({
             response: error ? 'ERROR' : activity,
             success: error ? false : true,
             error: error

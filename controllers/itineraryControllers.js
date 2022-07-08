@@ -26,7 +26,7 @@ const itinerariesControllers = {
         } catch(err) {
             error = err;
         };
-        res.jason({
+        res.json({
             response: error ? 'ERROR' : itinerary,
             success: error ? false : true,
             error: error

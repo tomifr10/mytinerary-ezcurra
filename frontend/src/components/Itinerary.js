@@ -10,7 +10,8 @@ import Button from '@mui/material/Button';
 import NotItinerary from '../components/NotItinerary'
 import { useDispatch, useSelector } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
-import Activities from '../components/Activities'
+import Activities from '../components/Activities';
+import Comments from '../components/Comments';
 import '../styles/itinerary.css';
 
 
@@ -95,6 +96,7 @@ function Itinerary({id}) {
                     <Activities id={itinerary._id}/>
                 </AccordionDetails>
             </Accordion>
+            <Comments id={itinerary._id}/>
         </div>
     </div>
             ))) : <NotItinerary/>}
