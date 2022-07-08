@@ -78,9 +78,10 @@ function Comments({id}) {
                     <div className='container-com'>
                         <div className='foto-text'>
                             <img className='photo' src={comment.userId.photo} />
+                            <p style={{fontSize: '.8rem', textAlign: 'center', fontWeight: '700'}}>{comment.userId.firstName.toUpperCase()} from {comment.userId.country}</p>
                             <div className='container-coment'>
                                 <input type="text-area" className="input" onChange={(event) => setModifyCom(event.target.value)} />
-                                <p className='coment'>{comment.comment}</p>
+                                <p className='coment'>"{comment.comment}"</p>
                             </div>
                         </div>
                         <div className='container-botones'>
@@ -91,13 +92,15 @@ function Comments({id}) {
                     : 
                     <div className='foto-text-out'>
                         <img className='photo' src={comment.userId.photo} />
-                        <p className='coment'>{comment.comment}</p>
+                        <p style={{fontSize: '.8rem', textAlign: 'center', fontWeight: '700'}}>{comment.userId.firstName.toUpperCase()} from {comment.userId.country}</p>
+                        <p className='coment'>"{comment.comment}"</p>
                     </div>
                 ) 
                 :  
                 <div className='foto-text-out'>
                     <img className='photo' src={comment.userId.photo} />
-                    <p className='coment'>{comment.comment}</p>
+                    <p style={{fontSize: '.8rem', textAlign: 'center', fontWeight: '700'}}>{comment.userId.firstName.toUpperCase()} from {comment.userId.country}</p>
+                    <p className='coment'>"{comment.comment}"</p>
                 </div>)
             ))}
             </div>

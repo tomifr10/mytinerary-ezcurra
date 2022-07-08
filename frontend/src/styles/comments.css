@@ -26,14 +26,18 @@
     width: 100%;
 }
 
+.coment {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .input {
     width: 80%;
     margin: .8rem;
 }
 
 .photo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     margin: .8rem auto;
