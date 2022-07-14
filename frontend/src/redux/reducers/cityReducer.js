@@ -11,6 +11,7 @@ const cityReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cities: action.payload,
+                filtro: action.payload
                 // aux: action.payload
             }
         case 'oneCity':

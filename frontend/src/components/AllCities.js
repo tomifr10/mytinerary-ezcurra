@@ -8,20 +8,23 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function AllCities() {
 
-  const dispatch = useDispatch()
-  const cities = useSelector(store => store.cityReducer.cities)
-  const cityFiltred = useSelector(store => store.cityReducer.filtro)
+  const dispatch = useDispatch();
   const [buscador, setBuscador] = useState("");
-
+  
   useEffect(() => {
     dispatch(citiesActions.mostrarCities())
+  },[]);
+
+  useEffect(() => {
     dispatch(citiesActions.filtroCity(buscador))
-  },[buscador, cities]);
-  
+  },[buscador]);
+
+  const cityFiltred = useSelector(store => store.cityReducer.filtro)
+
   function busqueda(e) {
     setBuscador(e.target.value);
   }
-  
+  console.log(cityFiltred)
   return (
     <div>
       <h2 className="titulo-cities">Cities</h2>

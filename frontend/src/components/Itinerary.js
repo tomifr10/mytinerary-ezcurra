@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import Activities from '../components/Activities';
 import Comments from '../components/Comments';
+import toast from 'react-hot-toast';
 import '../styles/itinerary.css';
 
 
@@ -28,6 +29,9 @@ function Itinerary({id}) {
     },[reload])
 
     async function handleLikes(id) {
+        if(!user) {
+            toast.error('You have to be logged in');
+        }
         const res = await dispatch(itinerariesActions.likeDislike(id));
         setreload(!reload)
         return res
