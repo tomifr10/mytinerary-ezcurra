@@ -26,7 +26,7 @@ function Comments({id}) {
         comments()
     }, [reload])
     let ids = itineraries.comments?.map(comment => (comment.userId ))
-    console.log(ids)
+    // console.log(ids)
 
     async function toAdd(event) {
         if(!user) {
